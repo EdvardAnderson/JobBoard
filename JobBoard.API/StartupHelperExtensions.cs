@@ -24,6 +24,8 @@ internal static class StartupHelperExtensions
         builder.Services.AddScoped<ICompanyRepository, CompanyRepository>();
         builder.Services.AddScoped<IJobOpeningRepository, JobOpeningRepository>();
 
+        builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
         builder.Services.AddDbContext<JobBoardContext>(options =>
         {
             options.UseSqlServer(configuration.GetConnectionString("JobBoardContext"));

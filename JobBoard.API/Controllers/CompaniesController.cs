@@ -1,4 +1,5 @@
-﻿using JobBoard.API.Models;
+﻿using AutoMapper;
+using JobBoard.API.Models;
 using JobBoard.API.Services;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
@@ -10,11 +11,13 @@ namespace JobBoard.API.Controllers;
 public class CompanyController : ControllerBase
 {
     private readonly ICompanyRepository _companyRepository;
+    private readonly IMapper _mapper;
 
-    public CompanyController(ICompanyRepository companyRepository)
+    public CompanyController(ICompanyRepository companyRepository, IMapper mapper)
     {
         _companyRepository =
             companyRepository ?? throw new ArgumentNullException(nameof(companyRepository));
+        _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
     }
 
     [HttpPost]

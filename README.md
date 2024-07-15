@@ -31,3 +31,6 @@ This will create an image inside Docker.
     -   dotnet add package microsoft.aspnetcore.jsonpatch -v 8.0.0
     -   dotnet add package microsoft.aspnetcore.mvc.newtonsoftjson -v 8.0.0
 
+# Automapper
+    -   dotnet add package automapper.extensions.microsoft.dependencyinjection
+
