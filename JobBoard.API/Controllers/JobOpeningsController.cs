@@ -8,11 +8,11 @@ namespace JobBoard.API.Controllers;
 
 [ApiController]
 [Route("api/companies/{companyId}/jobopenings")]
-public class JobOpeniningsController : ControllerBase
+public class JobOpeningsController : ControllerBase
 {
     private readonly IJobOpeningRepository _jobOpeningsRepository;
 
-    public JobOpeniningsController(IJobOpeningRepository jobOpeningsRepository)
+    public JobOpeningsController(IJobOpeningRepository jobOpeningsRepository)
     {
         _jobOpeningsRepository =
             jobOpeningsRepository ?? throw new ArgumentNullException(nameof(jobOpeningsRepository));
