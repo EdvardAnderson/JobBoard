@@ -1,10 +1,14 @@
-﻿namespace JobBoard.API;
+﻿using JobBoard.API.Services;
+
+namespace JobBoard.API;
 
 internal static class StartupHelperExtensions
 {
     internal static WebApplication ConfigureServices(this WebApplicationBuilder builder)
     {
         builder.Services.AddControllers();
+        builder.Services.AddScoped<ICompanyRepository, CompanyRepository>();
+        builder.Services.AddScoped<IJobOpeningRepository, JobOpeningRepository>();
         return builder.Build();
     }
 
