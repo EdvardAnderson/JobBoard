@@ -11,6 +11,10 @@ internal static class StartupHelperExtensions
     )
     {
         builder.Services.AddControllers();
+
+        builder.Services.AddEndpointsApiExplorer();
+        builder.Services.AddSwaggerGen();
+
         builder.Services.AddScoped<ICompanyRepository, CompanyRepository>();
         builder.Services.AddScoped<IJobOpeningRepository, JobOpeningRepository>();
 
@@ -27,6 +31,8 @@ internal static class StartupHelperExtensions
         if (app.Environment.IsDevelopment())
         {
             app.UseDeveloperExceptionPage();
+            app.UseSwagger();
+            app.UseSwaggerUI();
         }
 
         app.UseAuthorization();
