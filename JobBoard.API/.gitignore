@@ -17,6 +17,7 @@
 mono_crash.*
 
 # Build results
+bin\Debug\net8.0
 [Dd]ebug/
 [Dd]ebugPublic/
 [Rr]elease/
