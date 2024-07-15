@@ -26,3 +26,8 @@ This will create an image inside Docker.
 @see https://aka.ms/aspnetcore/swashbuckle
 ## Powershell 
     -   dotnet add package Swashbuckle.AspNetCore -v 6.6.2
+
+# JSonPatch
+    -   dotnet add package microsoft.aspnetcore.jsonpatch -v 8.0.0
+    -   dotnet add package microsoft.aspnetcore.mvc.newtonsoftjson -v 8.0.0
+

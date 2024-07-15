@@ -10,7 +10,13 @@ internal static class StartupHelperExtensions
         IConfiguration configuration
     )
     {
-        builder.Services.AddControllers();
+        builder
+            .Services.AddControllers(options =>
+            {
+                options.ReturnHttpNotAcceptable = true;
+            })
+            .AddNewtonsoftJson()
+            .AddXmlDataContractSerializerFormatters();
 
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
