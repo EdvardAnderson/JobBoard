@@ -10,9 +10,21 @@ internal static class StartupHelperExtensions
         IConfiguration configuration
     )
     {
-        builder.Services.AddControllers();
+        builder
+            .Services.AddControllers(options =>
+            {
+                options.ReturnHttpNotAcceptable = true;
+            })
+            .AddNewtonsoftJson()
+            .AddXmlDataContractSerializerFormatters();
+
+        builder.Services.AddEndpointsApiExplorer();
+        builder.Services.AddSwaggerGen();
+
         builder.Services.AddScoped<ICompanyRepository, CompanyRepository>();
         builder.Services.AddScoped<IJobOpeningRepository, JobOpeningRepository>();
+
+        builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
         builder.Services.AddDbContext<JobBoardContext>(options =>
         {
@@ -27,6 +39,8 @@ internal static class StartupHelperExtensions
         if (app.Environment.IsDevelopment())
         {
             app.UseDeveloperExceptionPage();
+            app.UseSwagger();
+            app.UseSwaggerUI();
         }
 
         app.UseAuthorization();

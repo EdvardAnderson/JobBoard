@@ -21,3 +21,16 @@ This will create an image inside Docker.
 ## Using the JobBoardContext
     - create an initial migration: dotnet ef migrations add InitialCreate
     - persist the initial migration to the database: dotnet ef database update InitialCreate  
+
+# Swagger
+@see https://aka.ms/aspnetcore/swashbuckle
+## Powershell 
+    -   dotnet add package Swashbuckle.AspNetCore -v 6.6.2
+
+# JSonPatch
+    -   dotnet add package microsoft.aspnetcore.jsonpatch -v 8.0.0
+    -   dotnet add package microsoft.aspnetcore.mvc.newtonsoftjson -v 8.0.0
+
+# Automapper
+    -   dotnet add package automapper.extensions.microsoft.dependencyinjection
+
