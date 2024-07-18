@@ -8,12 +8,12 @@ namespace JobBoard.API.Controllers;
 
 [ApiController]
 [Route("api/companies")]
-public class CompanyController : ControllerBase
+public class CompaniesController : ControllerBase
 {
     private readonly ICompanyRepository _companyRepository;
     private readonly IMapper _mapper;
 
-    public CompanyController(ICompanyRepository companyRepository, IMapper mapper)
+    public CompaniesController(ICompanyRepository companyRepository, IMapper mapper)
     {
         _companyRepository =
             companyRepository ?? throw new ArgumentNullException(nameof(companyRepository));
@@ -23,7 +23,12 @@ public class CompanyController : ControllerBase
     [HttpPost]
     public async Task<ActionResult<CompanyDto>> CreateCompany(CompanyForCreationDto company)
     {
-        throw new NotImplementedException();
+        var companyEntity = _mapper.Map<Entities.Company>(company);
+        _companyRepository.AddCompany(companyEntity);
+        await _companyRepository.SaveAsync();
+
+        var createdCompany = _mapper.Map<CompanyDto>(companyEntity);
+        return CreatedAtRoute("GetCompany", new { companyId = companyEntity.Id }, createdCompany);
     }
 
     [HttpGet]
