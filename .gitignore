@@ -17,6 +17,10 @@
 mono_crash.*
 
 # Build results
+../[Oo]bj/
+../[Dd]ebug/
+# Ignore the net8.0 directory within Debug
+../[Dd]ebug/net8.0/
 [Dd]ebug/
 [Dd]ebugPublic/
 [Rr]elease/
