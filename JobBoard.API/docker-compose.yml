@@ -1,0 +1,33 @@
+# Please refer https://aka.ms/HTTPSinContainer on how to setup an https developer certificate for your ASP.NET Core service.
+version: '3.4'
+
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      SA_PASSWORD: "Fr00t_L00pth"
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1433:1433"
+    networks:
+      - backend_network
+      
+  api:
+    image: jobboardapi
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "5147:5147"
+    depends_on:
+      - sqlserver
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ConnectionStrings__DefaultConnection: "Server=sqlserver;Initial Catalog=JobBoard;Database=JobBoard;User Id=sa;Password=Fr00t_L00pth;"
+    networks:
+      - backend_network
+
+networks:
+  backend_network:
+ 
+ 
